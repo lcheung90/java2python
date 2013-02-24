@@ -33,3 +33,15 @@ astTransforms = [
 	(Type('FUNCTIION_METHOD_DECL') > Type('IDENT'),camel_to_snake),
 	(Type('VOID_METHOD_DECL') > Type('IDENT'),camel_to_snake)
 ]
+
+def camel_to_snake(node,config):
+	rawstring = re.findall('[a-z]+|[A-Z][a-z]*',node.token.text)
+	snake_string = ""
+	index = 0
+	for word in rawstring:
+		if index == 0:
+			snake_string += word
+			index = index + 1
+		else:
+			snake_string += "_" + word
+	node.token.text = snake_string
