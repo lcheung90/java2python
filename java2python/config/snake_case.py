@@ -28,5 +28,8 @@ astTransforms = [
 	 transform.formatString),
 
 	(Type('TYPE') > Type('QUALIFIED_TYPE_IDENT') > Type('IDENT'),
-	 transform.typeSub)
+	 transform.typeSub),
+	
+	(Type('FUNCTIION_METHOD_DECL') > Type('IDENT'),camel_to_snake),
+	(Type('VOID_METHOD_DECL') > Type('IDENT'),camel_to_snake)
 ]
